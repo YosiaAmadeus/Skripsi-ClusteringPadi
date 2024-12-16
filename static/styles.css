@@ -1,0 +1,606 @@
+/* General styles */
+body {
+  display: flex;
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+  color: #fff;
+  font-size: 14px;
+}
+
+/* Sidebar styles */
+#sidebar {
+  width: 250px;
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  left: -250px;
+  height: 100vh;
+  overflow: hidden;
+  transition: 0.3s;
+}
+
+#sidebar nav ul {
+  list-style: none;
+  padding: 0;
+}
+
+#sidebar nav ul li {
+  padding: 15px;
+  text-align: center;
+}
+
+#sidebar nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+}
+
+.open-btn {
+  background: none;
+  color: #fff;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.open-btn {
+  position: absolute;
+  left: 15px;
+  top: 20px;
+}
+
+/* Main content styles */
+#main-content {
+  margin-left: 0;
+  transition: 0.3s;
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+header h1 {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0; /* Tambahkan margin 0 */ 
+}
+
+/* Section styles */
+section h1 {
+  font-size: 40px;
+  margin-top: 5%;
+}
+
+section p {
+  font-size: 22px;
+  margin-top: 3%;
+}
+
+.upload-btn {
+  padding: 10px 20px;
+  margin: 10px 0;
+  font-size: 25px;
+  color: #000;
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.upload-btn:hover {
+  background-color: #ddd;
+}
+
+/* Options container */
+.options-container {
+display: flex;
+justify-content: space-around;
+margin: 20px 0;
+}
+
+.option-group p {
+font-weight: bold;
+margin-bottom: 3px;
+font-size: 20px;
+}
+
+.option-group label {
+display: block;
+font-size: 20px;
+margin: 5px 0;
+}
+
+input[type="radio"] {
+appearance: none;
+-webkit-appearance: none;
+-moz-appearance: none;
+width: 20px;
+height: 20px;
+border: 2px solid #007BFF;
+border-radius: 3px;
+display: inline-block;
+position: relative;
+cursor: pointer;
+}
+
+input[type="radio"]:checked::before {
+content: "";
+width: 10px;
+height: 10px;
+background-color: #007BFF;
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+border-radius: 2px;
+}
+
+/* Start button */
+.start-btn {
+  padding: 20px 40px;
+  font-size: 25px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  margin-top: 1px;
+}
+
+.start-btn:hover {
+  background-color: #45a049;
+}
+
+/* Styling for Rice Plant 101 page */
+.main-content {
+padding: 20px;
+color: #ffffff;
+}
+
+.page-title {
+text-align: center;
+color: #ffffff;
+font-size: 40px;
+margin: 4%;
+}
+
+.accordion-container {
+width: 80%;
+margin: 0 auto;
+}
+
+.accordion {
+border: 1px solid #888;
+border-radius: 5px;
+margin-bottom: 30px;
+background-color: #333;
+}
+
+.accordion-header {
+background-color: #444;
+color: #fff;
+cursor: pointer;
+padding: 15px;
+text-align: left;
+border: none;
+width: 100%;
+display: flex;
+justify-content: space-between;
+align-items: center;
+font-size: 1.3em;
+}
+
+.accordion-content {
+padding: 15px;
+display: none; /* Hidden by default */
+color: #ddd;
+background-color: #222;
+font-size: 1.2em;
+text-align: justify;
+}
+
+.accordion-content p {
+margin: 0;
+}
+
+.arrow {
+transition: transform 0.3s;
+}
+
+.accordion.open .arrow {
+transform: rotate(180deg); /* Rotate arrow when open */
+}
+
+/* Styling for About page */
+.about-content {
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: 20px;
+color: #ffffff;
+}
+
+.about-box {
+background-color: #444;
+color: #333333;
+width: 95%;
+max-width: 95%;
+margin: 10px 0;
+padding: 14spx;
+border-radius: 8px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+text-align: center;
+}
+
+.about-box h2 {
+font-size: 1.5em;
+margin-bottom: 10px;
+color: white;
+}
+
+.about-box p {
+font-size: 1.2em;
+line-height: 1.6;
+color: white;
+}
+
+/* Container untuk visualisasi */
+.visualization-container {
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 20px;
+}
+
+.visualization {
+display: flex;
+flex-direction: column;
+align-items: center;
+margin: 0 20px;
+}
+
+.visualization img {
+max-width: 100%;
+height: auto;
+margin-bottom: 10px;
+display: block;
+}
+
+.center-text {
+text-align: center;
+margin-top: 10px;
+font-size: 20px;
+color: #fff;
+}
+
+.center-btn {
+text-align: center;
+margin-top: 20px;
+}
+
+/* Tombol Excel */
+.excel-btn {
+padding: 10px 20px;
+font-size: 20px;
+background-color: #007BFF;
+color: white;
+border: none;
+cursor: pointer;
+border-radius: 5px;
+}
+
+.excel-btn:hover {
+background-color: #0056b3;
+}
+
+/* Flash container */
+.flash-container {
+text-align: center;
+margin-top: 20px;
+}
+
+.flash-container ul {
+list-style-type: none;
+padding: 0;
+}
+
+.flash-container li {
+display: inline;
+color: red;  /* Warna hijau untuk flash message */
+font-weight: bold;
+margin-top: 10px;
+font-size: 1.5em;
+}
+
+.pdf-btn {
+background-color: #4CAF50; /* Warna hijau */
+border: none;
+color: white;
+padding: 15px 32px;
+text-align: center;
+text-decoration: none;
+display: inline-block;
+font-size: 16px;
+margin: 4px 2px;
+cursor: pointer;
+border-radius: 12px;
+transition-duration: 0.4s;
+}
+
+.pdf-btn:hover {
+background-color: white; /* Warna latar belakang saat hover */
+color: #4CAF50; /* Warna teks saat hover */
+border: 2px solid #4CAF50; /* Garis border saat hover */
+}
+
+/* Pastikan teks di dalam modal memiliki warna hitam */
+.modal-body {
+color: black;
+text-align: left;
+}
+
+.modal-title {
+color: black;
+font-weight: bold;
+}
+
+/* Menambah ruang di sekitar teks hasil clustering */
+#clustering-result { 
+margin-top: 20px; /* Menambah ruang di atas teks */ 
+font-size: 25px; /* Mengurangi ukuran teks */
+}
+
+/* Pastikan dropdown selalu muncul ke bawah */
+/* Pastikan dropdown selalu muncul ke bawah */
+.option-group select {
+display: block;
+width: 100%;
+height: calc(1.5em + .75rem + 2px);
+padding: .375rem 1.75rem .375rem .75rem;
+font-size: 1rem;
+font-weight: 400;
+line-height: 1.5;
+color: #495057;
+background-color: #fff;
+background-clip: padding-box;
+border: 1px solid #ced4da;
+border-radius: .25rem;
+transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+overflow: visible; /* Pastikan overflow visible */
+}
+
+.option-group select:focus {
+border-color: #007BFF;
+outline: none;
+}
+
+.option-group select option {
+position: relative;
+}
+
+/* Styling untuk Comments Section */
+#comments-section {
+margin-top: 20px;
+background-color: #333;
+padding: 20px;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#comments-section h2 {
+color: #ffffff;
+text-align: left;
+border-bottom: 2px solid #007BFF;
+padding-bottom: 5px;
+margin-bottom: 15px;
+font-size: 24px;
+display: block;  /* Tambahkan ini untuk memastikan elemen di bawahnya bergeser ke bawah */
+}
+
+#comment-form {
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+width: 100%;  /* Tambahkan ini untuk mengisi lebar penuh */
+}
+
+#comment-form label {
+color: #ffffff;
+margin-bottom: 5px;
+}
+
+#comment-form textarea,
+#comment-form input {
+width: 99%;
+padding: 10px;
+border-radius: 5px;
+border: 1px solid #ddd;
+background-color: #444;
+color: #fff;
+font-size: 16px;
+margin-bottom: 15px;
+}
+
+#name-input:disabled {
+background-color: #333;  /* Lebih gelap */
+transition: background-color 0.3s ease;  /* Animasi perubahan warna */
+}
+
+#anonymous-checkbox {
+margin-right: 10px;
+width: 20px; 
+height: 20px; 
+cursor: pointer;
+}
+
+#anonymous-checkbox-label {
+font-size: 16px;
+color: #ffffff;
+cursor: pointer;
+vertical-align: middle;
+white-space: nowrap;
+text-align: left; /* Tambahkan ini untuk merata kiri */
+}
+
+.checkbox-container {
+display: flex;
+align-items: center;
+margin-bottom: 15px;
+flex-wrap: nowrap;
+}
+
+#submit-button {
+background-color: #007BFF;
+color: white;
+border: none;
+padding: 10px 20px;
+font-size: 16px;
+border-radius: 5px;
+cursor: pointer;
+text-align: center;
+width: 150px;  /* Kurangi panjang tombol */
+align-self: center;  /* Buat tombol rata tengah */
+}
+
+#submit-button:hover {
+background-color: #0056b3;
+}
+
+#comments-list {
+margin-top: 20px;
+}
+
+.comment {
+margin-bottom: 15px;
+padding: 10px;
+border-radius: 5px;
+background-color: #444;
+color: #fff;
+border-left: 4px solid #007BFF;
+font-size: 16px;
+text-align: left;  /* Tambahkan ini untuk merata kiri */
+}
+
+.reply {
+margin-left: 40px;  /* Tambahkan margin kiri untuk membedakan antara komentar dan reply */
+margin-top: 10px;   /* Berikan jarak antara komentar dan reply */
+padding: 10px;
+border-radius: 5px;
+background-color: #555;
+color: #fff;
+border-left: 3px solid #007BFF;
+font-size: 16px;
+text-align: left;
+}
+
+/* Styling untuk form reply */
+.reply-form {
+margin-left: 20px;
+margin-top: 10px;
+display: none;
+text-align: left;  /* Pastikan semua rata kiri */
+}
+
+.reply-form label {
+display: block;
+margin-bottom: 2px;  /* Jarak antara label dan kotak input */
+}
+
+.reply-form input.reply-name,
+.reply-form textarea.reply-input {
+margin-bottom: 15px;  /* Jarak antara kotak input dan elemen berikutnya */
+width: 98%;
+padding: 10px;
+border-radius: 5px;
+border: 1px solid #ddd;
+background-color: #444;
+color: #fff;
+font-size: 16px;
+}
+
+/* Tambahkan jarak spesifik untuk label "Name" dan input "Your Name" */
+.reply-form label[for="reply-name"] {
+margin-bottom: 10px;  /* Jarak lebih besar antara label "Name" dan kotak input "Your Name" */
+}
+
+.reply-form input.reply-name {
+margin-bottom: 25px;  /* Jarak lebih besar antara kotak input "Your Name" dan elemen berikutnya */
+}
+
+.reply-form .reply-name:disabled {
+background-color: #333;  /* Lebih gelap */
+transition: background-color 0.3s ease;  /* Animasi perubahan warna */
+}
+
+.reply-form .checkbox-container {
+display: flex;
+align-items: center;
+margin-bottom: 15px;
+flex-wrap: nowrap;  /* Pastikan tidak ada break line */
+text-align: left;  /* Pastikan semuanya rata kiri */
+}
+
+/* Tambahkan jarak spesifik untuk label "Add a Reply" dan input "Your Reply" */
+.reply-form label[for="reply-input"] {
+margin-bottom: 10px;  /* Jarak lebih besar antara label "Add a Reply" dan kotak input "Your Reply" */
+}
+
+.reply-form textarea.reply-input { 
+margin-bottom: 20px; /* Jarak lebih besar antara kotak input "Your Reply" dan elemen berikutnya */ 
+}
+
+.reply-form .reply-anonymous {
+margin-right: 10px;
+width: 20px;
+height: 20px;
+cursor: pointer;
+}
+
+.reply-form .anonymous-checkbox-label {
+font-size: 16px;
+color: #ffffff;
+cursor: pointer;
+vertical-align: middle;
+white-space: nowrap;  /* Pastikan label tetap dalam satu baris */
+}
+
+.reply-form .reply-button {
+background-color: #007BFF;
+color: white;
+border: none;
+padding: 10px 20px;
+font-size: 16px;
+border-radius: 5px;
+cursor: pointer;
+text-align: center;
+width: 150px;  /* Kurangi panjang tombol */
+align-self: flex-start;  /* Buat tombol rata kiri */
+margin-top: 10px;
+}
+
+.reply-form .reply-button:hover {
+background-color: #0056b3;
+}
+
+/* Styling untuk tombol Reply */
+.reply-button {
+background-color: #007BFF; /* Warna hijau yang berbeda */
+color: white;
+border: none;
+padding: 3px 2px;
+font-size: 16px;
+border-radius: 5px;
+cursor: pointer;
+text-align: center;
+width: 100px;
+align-self: center;
+margin-top: 10px;
+}
+
+.comment-time {
+  font-size: 14px;  /* Perbesar ukuran font */
+  font-weight: bold;  /* Buat tulisan bold */
+  color: #bbb;  /* Warna abu-abu terang */
+  float: right;  /* Posisikan di sebelah kanan */
+}

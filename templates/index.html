@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Website Clustering Produktivitas Padi</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div id="sidebar">
+    <nav>
+      <ul>
+        <li><a href="{{ url_for('home') }}">Home</a></li>
+        <li><a href="{{ url_for('riceplant101') }}">Rice Plant 101</a></li>
+        <li><a href="{{ url_for('about') }}">About</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <div id="main-content">
+    <header>
+      <h1>535210037</h1>
+      <button class="open-btn" onclick="toggleSidebar()">&#9776;</button>
+    </header>
+
+    <section class="content">
+      <h1>Pemetaan Wilayah di Indonesia Berdasarkan Produktivitas Panen Padi Menggunakan Algoritma K-Means Clustering & Fuzzy C-Means</h1>
+      <p>Silahkan upload data anda</p>
+
+      <!-- Mulai Formulir -->
+      <form id="clusteringForm" action="/run-clustering" method="post" enctype="multipart/form-data">
+        
+        <!-- Input File untuk Upload Dataset -->
+        <input type="file" name="dataset" accept=".xlsx" required>
+        <div class="flash-container">  <!-- Tambahkan elemen ini -->
+          {% with messages = get_flashed_messages() %}
+          {% if messages %}
+          <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+          {% endwith %}
+        </div>
+        <br><br>
+        <p><a href="{{ url_for('download_file', filename='template.xlsx') }}" download>Download contoh template (.xlsx)</a></p>
+        <p><button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">Lihat petunjuk upload</button></p>
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="myModalLabel">Petunjuk Upload</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <!-- Konten petunjuk upload -->
+                <p><strong>Keterangan:</strong></p>
+                <ul>
+                  <li>Satuan Luas Panen = Ha</li>
+                  <li>Satuan Produksi = Ton</li>
+                  <li>Satuan Produktivitas = Ku/Ha</li>
+                </ul>
+                <p><strong>Petunjuk:</strong></p>
+                <ul>
+                  <li>*Upload File .xlsx pada tombol "Choose File"</li>
+                  <li>*Pilih jumlah cluster (2 - 11)</li>
+                  <li>*Pilih model algoritma (K-Means Clustering atau Fuzzy C-Means)</li>
+                  <li>*Klik "Mulai" untuk mendapatkan hasil</li>
+                  <li>*Klik "Download as PDF" untuk menyimpan hasil dalam bentuk file PDF </li>
+                </ul>
+                <p><strong>PENTING:</strong></p>
+                <ul>
+                  <li>*Pastikan tidak ada kolom data yang kosong</li>
+                  <li>*Pastikan penulisan nama lokasi mengikuti format GADM</li>
+                  <li>*Rekomendasi Jumlah Cluster = 2 - 3, namun silahkan tentukan berdasarkan pilihan yang tersedia</li>
+                  <li>*Semakin banyak jumlah cluster, tingkat akurasi mungkin berkurang</li>
+                </ul>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+<!-- Pilihan Jumlah Cluster -->
+<div class="options-container">
+  <div class="option-group">
+    <p>Jumlah Cluster</p>
+    <select name="clusters" required>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+      <option value="11">11</option>
+    </select>
+  </div>
+
+  <!-- Pilihan Model Algoritma -->
+  <div class="option-group">
+    <p>Model Algoritma</p>
+    <label><input type="radio" name="algorithm" value="kmeans" required> K-Means Clustering</label>
+    <label><input type="radio" name="algorithm" value="fuzzy"> Fuzzy C-Means</label>
+  </div>
+</div>
+
+        <!-- Tombol Mulai -->
+        <button type="submit" class="start-btn">Mulai</button>
+      </form>
+      <!-- Akhir Formulir -->
+
+      <!-- Tampilkan Hasil Clustering -->
+{% if result %}
+<h2 id="clustering-result">{{ keterangan }}</h2>
+<div class="visualization-container">
+  <div class="visualization">
+    <img src="{{ url_for('static', filename='distribution.png') }}" alt="Distribusi Cluster">
+  </div>
+  <div class="visualization">
+    <img src="{{ url_for('static', filename='map.png') }}" alt="Peta Hasil Clustering">
+  </div>
+</div>
+<p class="center-text">Clustering completed successfully!</p>
+<div class="center-btn">
+  <button onclick="downloadPDF()" class="pdf-btn">Download as PDF</button>
+{% endif %}
+      
+    </section>
+  </div>
+
+  <!-- Tambahkan script Bootstrap dan jQuery -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+  function downloadPDF() {
+      window.location.href = "/download-pdf";
+  }
+  </script>
+
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
